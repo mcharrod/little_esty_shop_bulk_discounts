@@ -18,4 +18,11 @@ describe 'discount show page' do
       end
     end
   end
+
+  it 'shows all discount info' do
+    visit merchant_discount_path(@merchant1, @discount_a)
+    expect(page).to have_content(@discount_a.name)
+    expect(page).to have_content("Quantity threshold: #{@discount_a.min_quantity}")
+    expect(page).to have_content("Percent off: #{@discount_a.percent_off}")
+  end
 end
