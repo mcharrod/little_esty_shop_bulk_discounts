@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     resources :dashboard, only: [:index]
     resources :items, except: [:destroy]
     resources :item_status, only: [:update]
-    resources :discounts, only:[:index, :show, :new, :create, :destroy, :edit]
+    resources :discounts, only:[:index, :show, :new, :create, :destroy, :edit, :update]
     resources :invoices, only: [:index, :show, :update]
   end
 
