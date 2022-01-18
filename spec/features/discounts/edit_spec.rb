@@ -23,5 +23,14 @@ describe 'discount edit' do
     expect(page).to have_field('Minimum quantity:', with: @discount1.min_quantity)
   end
 
-  it 'updates the discount when you hit submit and redirects to show page' do 
+  it 'updates the discount info when you hit submit and redirects to show page' do
+    visit edit_merchant_discount_path(@merchant, @discount1)
+    fill_in('Discount name:', with: 'New name')
+    fill_in('Percent off:', with: 30)
+    click_button('Save')
+
+    expect(current_path).to eq(merchant_discount_path(@merchant, @discount1))
+    expect(page).to have_content('New name')
+    expect(page).to have_content(30)
+  end
 end
